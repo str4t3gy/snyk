@@ -17,6 +17,11 @@
       "cmd": "shasum -a 256 snyk-linux > snyk-linux.sha256 && shasum -a 256 snyk-macos > snyk-macos.sha256 && shasum -a 256 snyk-win.exe > snyk-win.exe.sha256 && shasum -a 256 snyk-alpine > snyk-alpine.sha256"
     },
     {
+      "//": "build docker package",
+      "path": "@semantic-release/exec",
+      "cmd": "./release-scripts/docker-desktop-release.sh"
+    },
+    {
       "//": "removes the file we use to identify a build as a standalone binary",
       "path": "@semantic-release/exec",
       "cmd": "rm dist/STANDALONE"
@@ -66,6 +71,11 @@
           "path": "./snyk-alpine.sha256",
           "name": "snyk-alpine.sha256",
           "label": "snyk-alpine.sha256"
+        },
+        {
+          "path": "./dist/docker-bundle.tar.gz",
+          "name": "docker-bundle.tar.gz",
+          "label": "docker-bundle.tar.gz"
         }
       ]
     }
